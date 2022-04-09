@@ -33,7 +33,7 @@ import { Router, RouterModule } from '@angular/router';
         component: UsersComponent
       },
       {
-        path:'editUser/:username',
+        path:'edit-user/:id',
         component: EditUserComponent
       }
     ])
