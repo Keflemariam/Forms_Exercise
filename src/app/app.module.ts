@@ -7,18 +7,24 @@ import { AppComponent } from './app.component';
 import { ChangepasswordFormComponent } from './changepassword-form/changepassword-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import{HttpClientModule} from '@angular/common/http';
+import { PostsComponent } from './posts/posts.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChangepasswordFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    PostsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [],
