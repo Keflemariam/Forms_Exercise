@@ -19,4 +19,11 @@ export class UserService {
   getUser():Observable<User>{
     return this.http.get<User>(this.apiURL+'/1')
   }
+
+  createUser(user: User):Observable<User>{
+    return this.http.post<User>(this.apiURL,user)
+  }
+
+  
+
 }
