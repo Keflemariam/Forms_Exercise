@@ -10,6 +10,7 @@ import{HttpClientModule} from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { Router, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,17 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule, 
+    RouterModule.forRoot([
+      {
+        path:'',
+        component: UsersComponent
+      },
+      {
+        path:'editUser/:username',
+        component: EditUserComponent
+      }
+    ])
     
   ],
   providers: [],
