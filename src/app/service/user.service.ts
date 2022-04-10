@@ -16,8 +16,8 @@ export class UserService {
     return this.http.get<User[]>(this.apiURL);
   }
 
-  getUser():Observable<User>{
-    return this.http.get<User>(this.apiURL+'/1')
+  getUser(id:any):Observable<User>{
+    return this.http.get<User>(this.apiURL+['/'+id])
   }
 
   createUser(user: User):Observable<User>{

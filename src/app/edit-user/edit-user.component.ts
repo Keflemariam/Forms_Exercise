@@ -1,5 +1,6 @@
-import { Component  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '../Interface/user';
 import { UserService } from '../service/user.service';
 
@@ -10,12 +11,12 @@ import { UserService } from '../service/user.service';
 })
 
 
-export class EditUserComponent  {
+export class EditUserComponent implements OnInit {
   form: FormGroup;
-  users:User[]=[];
+  user:User;
 
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private route: ActivatedRoute, private userService: UserService) {
     this.form=fb.group({
       name:['',Validators.required],
       username:['',Validators.required],
@@ -26,6 +27,15 @@ export class EditUserComponent  {
     })
    }
 
+   
+   ngOnInit(){
+     this.route.paramMap
+      .subscribe(params=> {
+        let id= params.get('id');
+        this.userService.getUser(id)
+          .subscribe(data=>this.user=data);
+      })
+   }
    
    
 }
