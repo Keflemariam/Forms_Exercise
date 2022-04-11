@@ -1,5 +1,6 @@
+import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Component, OnInit  } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../Interface/user';
 import { UserService } from '../service/user.service';
@@ -27,14 +28,30 @@ export class EditUserComponent implements OnInit {
     })
    }
 
+   populate_data( data:any){
+    this.user=data;
+    console.log(this.user);
+    this.form=new FormGroup({
+      name: new FormControl(this.user['name']),
+      username: new FormControl(this.user['username']),
+      email: new FormControl(this.user['email']),
+      phone: new FormControl(this.user['phone']),
+      website: new FormControl(this.user['website']),
+      company: new FormControl(this.user['company']),
+    })
    
+   }
    ngOnInit(){
+     
      this.route.paramMap
       .subscribe(params=> {
-        let id= params.get('id');
-        this.userService.getUser(id)
-          .subscribe(data=>this.user=data);
-      })
+          this.userService.getUser(params.get('id'))
+           .subscribe((data)=>{
+               this.populate_data(data);
+            })
+          })
+    
+      
    }
    
    
