@@ -37,7 +37,7 @@ export class EditUserComponent implements OnInit {
       email: new FormControl(this.user['email']),
       phone: new FormControl(this.user['phone']),
       website: new FormControl(this.user['website']),
-      company: new FormControl(this.user['company']),
+      company: new FormControl(this.user['website']),
     })
    
    }
